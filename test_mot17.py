@@ -3,6 +3,7 @@ from tracker import SSTTracker, TrackerConfig, Track
 import cv2
 from data.mot_data_reader import MOTDataReader
 import numpy as np
+import matplotlib.pyplot as plt
 from config.config import config
 from utils.timer import Timer
 import argparse
@@ -89,9 +90,9 @@ def test(choice=None):
             image_org = tracker.update(img, det[:, 2:6], args.show_image, i)
             timer.toc()
             print('{}:{}, {}, {}\r'.format(os.path.basename(saved_file_name), i, int(i*100/len(reader)), choice_str))
-            if args.show_image and not image_org is None:
-                cv2.imshow('res', image_org)
-                cv2.waitKey(1)
+            #if args.show_image and not image_org is None:
+                #plt.imshow('res', image_org)
+                #cv2.waitKey(1)
 
             if args.save_video and not image_org is None:
                 vw.write(image_org)
